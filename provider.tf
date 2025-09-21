@@ -26,20 +26,6 @@ resource "netbox_tenant" "internal_cosmos" {
     name = "Cosmos"
     description = "internal cosmos network"
 }
-# resource "netbox_tenant" "internal_dev_k8" {
-#     name = "internal_dev_k8"
-#     description = "internal development k8 cluster"
-#}
-
-/*
-*    LOCATIONS
-*/
-# resource "netbox_location" "test" {
-#     name        = "test"
-#     description = "my description"
-#     site_id     = netbox_site.test.id
-#     tenant_id   = netbox_tenant.test.id
-# }
 
 resource "netbox_device_role" "odin_role" {
     name      = "Red"
@@ -61,8 +47,4 @@ resource "netbox_device" "odin" {
     role_id        = netbox_device_role.odin_role.id
     site_id        = netbox_site.home.id
     tenant_id      = netbox_tenant.internal_cosmos.id
-    # local_context_data = jsonencode({
-    #     "setting_a" = "Some Setting"
-    #     "setting_b" = 42
-    # })
 }
